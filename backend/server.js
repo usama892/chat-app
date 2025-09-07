@@ -53,5 +53,5 @@ io.on('connection', (socket) => {
     console.log('User disconnected');
   });s
 });
-const PORT = process.env.RENDER_PORT;
+const PORT = process.env.PORT;
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
