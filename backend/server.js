@@ -51,7 +51,7 @@ io.on('connection', (socket) => {
 
   socket.on('disconnect', () => {
     console.log('User disconnected');
-  });s
+  });
 });
 const PORT = process.env.PORT;
 app.get("/", (req, res) => {
