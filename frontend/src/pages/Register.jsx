@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { registerUser } from '../actions/authActions';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { registerUser } from "../actions/authActions";
+import { useNavigate } from "react-router-dom";
+import "./register.css";
 
 const Register = () => {
-  const [form, setForm] = useState({ username: '', password: '' });
+  const [form, setForm] = useState({ username: "", password: "" });
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { error, loading } = useSelector((state) => state.auth);
@@ -19,7 +20,7 @@ const Register = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="register-form">
       <h2>Register</h2>
       <input
         name="username"
@@ -34,9 +35,10 @@ const Register = () => {
         placeholder="Password"
         value={form.password}
       />
-      <button type="submit">Register</button>
-      {loading && <p>Registering...</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      <button type="submit" disabled={loading}>
+        {loading ? "Registering..." : "Register"}
+      </button>
+      {error && <p style={{ color: "red" }}>{error}</p>}
     </form>
   );
 };

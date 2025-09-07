@@ -10,7 +10,7 @@ export const loginUser = (formData, navigate) => async (dispatch) => {
 console.log(user)
     localStorage.setItem('token', token);
     localStorage.setItem('myUserId', user._id); // ✅ Now storing actual user ID
-
+    localStorage.setItem('username',user.username);
     dispatch({ type: 'LOGIN_SUCCESS', payload: token });
     navigate('/dashboard');
   } catch (err) {

@@ -1,13 +1,15 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
-import { loginUser } from '../actions/authActions';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { loginUser } from "../actions/authActions";
+import { useNavigate } from "react-router-dom";
+import "./Login.css"; // Import CSS file
 
 const Login = () => {
-  const [form, setForm] = useState({ username: '', password: '' });
+  const [form, setForm] = useState({ username: "", password: "" });
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { error, loading } = useSelector((state) => state.auth);
+
+  const { error, loading, success } = useSelector((state) => state.auth);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -15,17 +17,69 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(loginUser(form, navigate));
+    dispatch(loginUser(form,navigate));
   };
 
+  useEffect(() => {
+    if (success) {
+      navigate("/profile");
+    }
+  }, [success, navigate]);
+
   return (
-    <form onSubmit={handleSubmit}>
-      <input name="username" onChange={handleChange} placeholder="Username" />
-      <input name="password" type="password" onChange={handleChange} placeholder="Password" />
-      <button type="submit">Login</button>
-      {loading && <p>Loading...</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-    </form>
+    <div className="login-container">
+      <div className="login-box">
+        <h2 className="login-title">Login to Your Account</h2>
+
+        <form onSubmit={handleSubmit} className="login-form">
+          <div className="form-group">
+            <label htmlFor="username" className="form-label">
+              Username
+            </label>
+            <input
+              id="username"
+              name="username"
+              value={form.username}
+              onChange={handleChange}
+              placeholder="Enter your username"
+              className="form-input"
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="password" className="form-label">
+              Password
+            </label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              value={form.password}
+              onChange={handleChange}
+              placeholder="Enter your password"
+              className="form-input"
+            />
+          </div>
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="login-button"
+          >
+            {loading ? "Logging in..." : "Login"}
+          </button>
+
+          {error && <p className="error-text">{error}</p>}
+        </form>
+
+        <p className="signup-text">
+          Don’t have an account?{" "}
+          <a href="/register" className="signup-link">
+            Sign up
+          </a>
+        </p>
+      </div>
+    </div>
   );
 };
 
