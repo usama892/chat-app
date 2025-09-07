@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { loginUser } from "../actions/authActions";
 import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./login.css"; // Import CSS file
 
 const Login = () => {
@@ -22,7 +23,7 @@ const Login = () => {
 
   useEffect(() => {
     if (success) {
-      navigate("/profile");
+      navigate("/dashboard");
     }
   }, [success, navigate]);
 
