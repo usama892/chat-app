@@ -54,4 +54,7 @@ io.on('connection', (socket) => {
   });s
 });
 const PORT = process.env.PORT;
+app.get("/", (req, res) => {
+  res.send("🚀 Backend is running on Render");
+});
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
