@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { loginUser } from "../actions/authActions";
 import { useNavigate } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./login.css"; // Import CSS file
 
 const Login = () => {
@@ -74,10 +74,10 @@ const Login = () => {
         </form>
 
         <p className="signup-text">
-          Don’t have an account?{" "}
-          <a href="/register" className="signup-link">
-            Sign up
-          </a>
+          Don’t have an account?
+          {
+            <Link to={`/register`}>Sign up</Link>
+          }
         </p>
       </div>
     </div>
