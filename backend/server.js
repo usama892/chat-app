@@ -11,7 +11,7 @@ const socketio = require('socket.io');
 const server = http.createServer(app);
 const io = socketio(server, {
   cors: {
-    origin: "http://localhost:5173", // React frontend
+    origin: "https://chat-app-lac-iota.vercel.app", // React frontend
     methods: ["GET", "POST"]
   }
 });
@@ -51,7 +51,7 @@ io.on('connection', (socket) => {
 
   socket.on('disconnect', () => {
     console.log('User disconnected');
-  });
+  });s
 });
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.RENDER_PORT;
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
