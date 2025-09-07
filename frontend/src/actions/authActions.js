@@ -4,7 +4,7 @@ export const loginUser = (formData, navigate) => async (dispatch) => {
   try {
     dispatch({ type: 'LOGIN_REQUEST' });
 
-    const res = await axios.post('http://localhost:5000/api/login', formData);
+    const res = await axios.post('https://chat-app-x56e.onrender.com/api/login', formData);
 
     const { token, user } = res.data;
 console.log(user)
@@ -22,7 +22,7 @@ export const registerUser = (formData, navigate) => async (dispatch) => {
   try {
     dispatch({ type: 'LOGIN_REQUEST' });
 
-    const res = await axios.post('http://localhost:5000/api/register', formData);
+    const res = await axios.post('https://chat-app-x56e.onrender.com/api/register', formData);
     const token = res.data.token;
 
     localStorage.setItem('token', token);

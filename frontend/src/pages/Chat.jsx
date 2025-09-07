@@ -25,7 +25,7 @@ const Chat = () => {
     socket.emit('joinRoom', { userId: senderId });
 
     axios
-      .get(`http://localhost:5000/api/messages/${receiverId}`, {
+      .get(`https://chat-app-x56e.onrender.com/api/messages/${receiverId}`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then((res) => setHistory(res.data))

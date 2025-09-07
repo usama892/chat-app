@@ -13,13 +13,13 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/dashboard', {
+    axios.get('https://chat-app-x56e.onrender.com/api/dashboard', {
       headers: { Authorization: `Bearer ${token}` },
     })
     .then((res) => setMessage(res.data.message))
     .catch(() => setMessage('Access denied'));
 
-    axios.get('http://localhost:5000/api/users', {
+    axios.get('https://chat-app-x56e.onrender.com/api/users', {
       headers: { Authorization: `Bearer ${token}` },
     })
     .then((res) => setUsers(res.data))
