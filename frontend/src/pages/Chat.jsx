@@ -5,7 +5,7 @@ import axios from 'axios';
 import './Chat.css'; // import CSS file
 
 // Make sure this matches your backend server
-const socket = io('chat-app-usama892s-projects.vercel.app');
+const socket = io('https://chat-app-x56e.onrender.com');
 
 const Chat = () => {
   const { userId: receiverId } = useParams();
