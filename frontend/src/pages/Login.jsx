@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { loginUser } from "../actions/authActions";
 import { useNavigate } from "react-router-dom";
-import "./Login.css"; // Import CSS file
+import "./login.css"; // Import CSS file
 
 const Login = () => {
   const [form, setForm] = useState({ username: "", password: "" });
